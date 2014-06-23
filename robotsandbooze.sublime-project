@@ -1,0 +1,14 @@
+{
+  "folders": [
+    {
+      "path": "/Users/mwesthoff/src/robotsandbooze",
+      "folder_exclude_patterns": [
+        "bin",
+        "node_modules",
+        "tmp",
+        "CAD"
+      ],
+      "file_exclude_patterns": ["*.sublime*"]
+    }
+  ]
+}
