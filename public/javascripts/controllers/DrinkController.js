@@ -16,9 +16,9 @@ function DrinkController($scope, $http) {
   };
 
   $scope.sizes = [
-    { size: '40', time: '18000' },
-    { size: '200', time: '90000' },
-    { size: '400', time: '180000' }
+    { size: '40', time: '36000' },
+    { size: '200', time: '180000' },
+    { size: '400', time: '360000' }
   ];
 
   $scope.selectedDrink;
@@ -136,7 +136,7 @@ function DrinkController($scope, $http) {
     console.log('Added new ingredient');
   };
 
-  $scope.removeIngredient = function (index) { 
+  $scope.removeIngredient = function (index) {
     $scope.newDrink.ingredients.splice(index, 1);
     console.log('Removed ingredient at index ' + index);
   };
