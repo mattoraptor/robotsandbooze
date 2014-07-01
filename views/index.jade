@@ -13,14 +13,14 @@ block content
       div#cover
         h1.title Booze-o-tron
         h2.subtitle AUTODRINK BOT 9000
-        div#pumps.row
+         div#pumps.row
           div.floatingPumpButtons
             div#plusMinus
               div.pumpButton(ng-click="addPump()") +
               div.pumpButton(ng-click="removePump()") -
             div#hiddenPumpControls
               div.pumpButton.singlePump(ng-repeat="pump in pumps.ingredients") {{$index}}
-              div#allPumps.pumpButton.small All
+             div#allPumps.pumpButton.small All
             div#pumpControlToggle.pumpButton PUMP
           div.pumpContainer(ng-repeat="pump in pumps.ingredients")
             select.mixers(ng-change="savePumpValue($index); writeNumDuplicates()", ng-model="pump.ingredient", ng-options="i for i in ingredientsList")
