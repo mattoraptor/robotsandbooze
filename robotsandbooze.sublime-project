@@ -6,7 +6,9 @@
         "bin",
         "node_modules",
         "tmp",
-        "CAD"
+        "CAD",
+        "public/images",
+        "public/libs"
       ],
       "file_exclude_patterns": ["*.sublime*"]
     }
