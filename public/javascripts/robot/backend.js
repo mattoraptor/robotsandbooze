@@ -15,7 +15,7 @@ exports.pump = function (ingredients) {
 
 function pumpMilliseconds(pump, ms) {
   console.log("\033[32m[PUMP] Starting " + pump + "\033[91m");
-  var url = 'http://10.4.204.182/arduino/pumpOn/' + pump + '/' + ms;
+  var url = 'http://10.4.204.176/arduino/pumpOn/' + pump + '/' + ms;
   console.log('calling ' + url);
   request.get(url);
   request(url, function (error, response, body) {
