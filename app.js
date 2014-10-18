@@ -9,6 +9,7 @@ var routes = require('./routes/index');
 //var users = require('./routes/users');
 var add = require('./routes/add');
 var edit = require('./routes/edit');
+var pumps = require('./routes/pumps');
 
 var mongoose = require('mongoose');
 var db = mongoose.createConnection('localhost', 'barmixvah');
@@ -37,9 +38,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', routes.index(Drink, Pump));
 app.get('/add', add.form(Drink));
 app.get('/edit', edit.show(Drink));
-//app.use('/users', users);
+app.get('/pumps', pumps.set(Pump));
 
-app.post('/updatepump.json', routes.updatePump(Pump));
+app.post('/updatepump.json', pumps.updatePump(Pump));
 app.post('/drink.json', add.addDrink(Drink));
 app.post('/pump.json', add.addPump(Pump));
 app.post('/updatedrink.json', edit.updateDrink(Drink));
@@ -55,9 +56,11 @@ app.use(function(req, res, next) {
 
 var server = app.listen(3000, '0.0.0.0');
 var io = require('socket.io').listen(server);
+io.set('log level', 1); // reduce logging
 
 io.sockets.on('connection', function (socket) {
-  socket.on("Make Drink", function (ingredients) {
+  socket.on("Make Drink", function (drinkName, ingredients) {
+    robot.lcdPrint(10 - (drinkName.length/2), 0, drinkName);
     robot.pump(ingredients);
     console.log(ingredients);
   });
@@ -106,6 +109,11 @@ app.use(function(err, req, res, next) {
         message: err.message,
         error: {}
     });
+});
+
+process.on('SIGINT', function () {
+    console.log("Shutting down Booze-O-Tron");
+    process.exit();
 });
 
 

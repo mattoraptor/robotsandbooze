@@ -1,0 +1,6 @@
+#!/bin/sh
+cd /var/lib/mongodb
+rm *
+/etc/init.d/mongod start
+cd /home/pi/git/barmixvah
+./restoremongo

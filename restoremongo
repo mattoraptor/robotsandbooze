@@ -1,0 +1,5 @@
+#!/bin/sh
+cd /var/lib/mongodb
+rm *
+mongorestore
+cd /home/pi/git/barmixvah
