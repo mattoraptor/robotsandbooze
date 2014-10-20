@@ -1,14 +1,18 @@
-var pump0, pump1, pump2, pump3, pump4, pump5, pump6, pump7;
+// GET IP
+var itf = require('os').networkInterfaces().wlan0;
+var ips = "";
+if (itf) {
+  ips = require('os').networkInterfaces().wlan0.map(function(interface) {
+	 return interface.address;
+  });
+}
 
+//GPIO
+var pump0, pump1, pump2, pump3, pump4, pump5, pump6, pump7;
 var gpio = require('rpi-gpio');
 
 // pumpx = pin number of gpio breakout connector
 // numbered according to MiniPiio ULN2803 board usage
-
-var lcdqueue = [];
-var ingstring = "";
-var lcdbusy = false;
-
 pump0 = 11;
 pump1 = 12;
 pump2 = 13;
@@ -27,21 +31,82 @@ gpio.setup(pump5, gpio.DIR_OUT);
 gpio.setup(pump6, gpio.DIR_OUT);
 gpio.setup(pump7, gpio.DIR_OUT);
 
-var ips = require('os').networkInterfaces().wlan0.map(function(interface) {
-	return interface.address;
-});
-
-var Lcd = require('lcd'),
-  lcd = new Lcd({rs:21, e:20, data:[16, 26, 19, 13], cols:20, rows:4});
-
-console.log("\033[31m[MSG] Booze-O-Tron 9000 Ready\033[91m");
-
 function setPin(pin, val) {
   gpio.write(pin, val, function(err) {
     if (err) throw err;
       console.log('Pin ' + pin + ' set to ' + val);
   });
 }
+
+//LCD
+var lcdqueue = [];
+var ingstring = "";
+var lcdbusy = false;
+
+var Lcd = require('lcd'),
+  lcd = new Lcd({rs:21, e:20, data:[16, 26, 19, 13], cols:20, rows:4});
+
+lcd.on('ready', function () {
+  exports.showTitle();
+});
+
+lcd.on('printed', function () {
+  lcdbusy = false;
+  if(lcdqueue.length > 0) {
+    var l = lcdqueue.shift();
+    processlcdSend(l);
+  }
+});
+
+lcd.on('clear', function () {
+  lcdbusy = false;
+  if(lcdqueue.length > 0) {
+    var l = lcdqueue.shift();
+    processlcdSend(l);
+  }
+});
+
+function processlcdSend(l) {
+  if(l.str== "lcdClear") {
+    lcdbusy = true;
+    lcd.clear();
+  }
+  else {
+    lcd.setCursor(l.col, l.row);
+    lcdbusy = true;
+    lcd.print(l.str);
+  }
+}
+
+process.on('SIGINT', function () {
+  console.log("Shutting down lcd");
+  lcd.close();
+//  process.exit();
+});
+
+exports.lcdPrint = function(cval, rval, strval) {
+  var l = { col: cval, row: rval, str: strval };
+  if(lcdbusy) {
+    lcdqueue.push(l);
+  }
+  else {
+    processlcdSend(l);
+  }
+}
+
+exports.lcdClear = function() {
+  if(lcdbusy) {
+    lcdqueue.push({ col: 0, row: 0, str: "lcdClear" });
+  }
+  else {
+    lcdbusy = true;
+    lcd.clear();
+  }
+}
+
+//BACKEND
+
+console.log("\033[31m[MSG] Booze-O-Tron 9000 Ready\033[91m");
 
 exports.pump = function (ingredients) {
   console.log("Dispensing Drink");
@@ -143,61 +208,3 @@ exports.showTitle = function () {
   exports.lcdPrint(0, 1, " BOOZE-O-TRON 9000  ");
   exports.lcdPrint(0, 3, ips + ":3000");
 };
-
-lcd.on('ready', function () {
-  exports.showTitle();
-});
-
-lcd.on('printed', function () {
-  lcdbusy = false;
-  if(lcdqueue.length > 0) {
-    var l = lcdqueue.shift();
-    processlcdSend(l);
-  }
-});
-
-lcd.on('clear', function () {
-  lcdbusy = false;
-  if(lcdqueue.length > 0) {
-    var l = lcdqueue.shift();
-    processlcdSend(l);
-  }
-});
-
-exports.lcdPrint = function(cval, rval, strval) {
-  var l = { col: cval, row: rval, str: strval };
-  if(lcdbusy) {
-    lcdqueue.push(l);
-  }
-  else {
-    processlcdSend(l);
-  }
-}
-
-function processlcdSend(l) {
-  if(l.str== "lcdClear") {
-    lcdbusy = true;
-    lcd.clear();
-  }
-  else {
-    lcd.setCursor(l.col, l.row);
-    lcdbusy = true;
-    lcd.print(l.str);
-  }
-}
-
-exports.lcdClear = function() {
-  if(lcdbusy) {
-    lcdqueue.push({ col: 0, row: 0, str: "lcdClear" });
-  }
-  else {
-    lcdbusy = true;
-    lcd.clear();
-  }
-}
-
-process.on('SIGINT', function () {
-  console.log("Shutting down lcd");
-  lcd.close();
-//  process.exit();
-});
