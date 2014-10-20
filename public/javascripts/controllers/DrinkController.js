@@ -33,12 +33,38 @@ function DrinkController($scope, $http) {
   $scope.pumpDuplicates = 0;
 
   $scope.ingredientsList = [
-    'Vodka', 'Rum', 'Whiskey', 'Tequila', 'Gin', 'Sake', 'Soju',
-    'Orange Juice', 'Apple Juice', 'Cranberry Juice', 'Pineapple Juice', 'Mango Juice', 'Grapefruit Juice', 'Lime Juice',
-    'Coke', 'Sprite', 'Ginger Ale', 'Root Beer', 'Dr. Pepper',
-    'Blue Liqueur', 'Sweet & Sour', 'Triple Sec', 'Kaluha', 'Peach Schnapps', 'Midori Melon',
-    'Champagne', 'Rye', 'Bourbon', 'Sweet Vermouth', 'Dry Vermouth', 'Bitters',
-    'Simple Syrup'
+  	'Gin', 
+	'Rum', 
+	'Whiskey', 
+	'Tequila', 
+	'Sake', 
+	'Soju',
+    	'Orange Juice', 
+	'Apple Juice', 
+	'Cranberry Juice', 
+	'Pineapple Juice', 
+	'Mango Juice', 
+	'Grapefruit Juice',
+	'Lime Juice',
+    	'Coke',
+	'Sprite',
+	'Ginger Ale',
+	'Root Beer',
+	'Dr. Pepper',
+    	'Blue Liqueur',
+	'Sweet & Sour',
+	'Triple Sec',
+	'Kaluha',
+	'Peach Schnapps',
+	'Midori Melon',
+    	'Champagne',
+	'Bourbon',
+	'Dry Vermouth',
+	'Sweet Vermouth',
+	'Bitters',
+    	'Vodka', 
+	'Rye',
+    	'Simple Syrup'
   ];
 
   $scope.setDrinks = function (drinks) {

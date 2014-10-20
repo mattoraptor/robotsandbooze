@@ -198,7 +198,6 @@ function makeDrink(ingredients, pumps, drinkSize) {
     ingredients[i].delay = ingredients[largestIndex].amount - ingredients[i].amount;
   }
   socket.emit("Make Drink", $scope.selectedDrink.name, ingredients);
-  //socket.emit("Make Drink", ingredients);
 }
 
 function startOnePump(self) {
