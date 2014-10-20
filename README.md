@@ -16,7 +16,7 @@ http://yujiangtham.com/2014/06/12/build-your-very-own-drink-mixing-robot-part-3/
 Caveats
 -------
 
-A few parts of the interface are incomplete or not very well-implemented at the moment.  Currently, only 5 pumps are supported (although you should be able to add as many as you want, up to the number of digital out pins on the Arduino).  You'll have to change the code in /public/javascripts/robot/backend.js to support this, but it's a quick and easy change.  Also, the add pumps button should be removed or greyed out when the max number of pumps is reached, but I have no code in place to do that yet currently.  In the add screen, there is no confirmation when a drink is added.  In the edit screen, the +/- buttons are not functional as of yet.
+A few parts of the interface are incomplete or not very well-implemented at the moment.  Currently, only 5 pumps are supported (although you should be able to add as many as you want, up to the number of digital out pins on the Arduino).  You'll have to change the code in /public/javascripts/robot/backend.js to support this, but it's a quick and easy change.  Also, the add pumps button should be removed or greyed out when the max number of pumps is reached, but I have no code in place to do that yet currently.  In the add screen, there is no confirmation when a drink is added.  In the edit screen, the +/- buttons are not functional as of yet.  
 
 
 Usage
@@ -33,4 +33,3 @@ Drinks can be added by pointing your browser to localhost:3000/add, and can be e
 
 
 Yu Jiang Tham, 2014
-=======

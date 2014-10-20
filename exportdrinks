@@ -1,0 +1,2 @@
+#!/bin/sh
+mongoexport --db barmixvah --collection drinks --out masterdrinklist.json

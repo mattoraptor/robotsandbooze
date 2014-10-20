@@ -33,16 +33,38 @@ function DrinkController($scope, $http) {
   $scope.pumpDuplicates = 0;
 
   $scope.ingredientsList = [
-    'Gin',
-    'Bourbon',
-    'Dry Vermouth',
-    'Sweet Vermouth',
-    'Bitters',
-    'Vodka',
-    'Rye',
-    'Simple Syrup',
-    'None',
-    'Fireball'
+  	'Gin', 
+	'Rum', 
+	'Whiskey', 
+	'Tequila', 
+	'Sake', 
+	'Soju',
+    'Orange Juice', 
+	'Apple Juice', 
+	'Cranberry Juice', 
+	'Pineapple Juice', 
+	'Mango Juice', 
+	'Grapefruit Juice',
+	'Lime Juice',
+    'Coke',
+	'Sprite',
+	'Ginger Ale',
+	'Root Beer',
+	'Dr. Pepper',
+    'Blue Liqueur',
+	'Sweet & Sour',
+	'Triple Sec',
+	'Kaluha',
+	'Peach Schnapps',
+	'Midori Melon',
+    'Champagne',
+	'Bourbon',
+	'Dry Vermouth',
+	'Sweet Vermouth',
+	'Bitters',
+    'Vodka', 
+	'Rye',
+    'Simple Syrup'
   ];
 
   $scope.setDrinks = function (drinks) {
@@ -146,7 +168,7 @@ function DrinkController($scope, $http) {
     console.log('Added new ingredient');
   };
 
-  $scope.removeIngredient = function (index) {
+  $scope.removeIngredient = function (index) { 
     $scope.newDrink.ingredients.splice(index, 1);
     console.log('Removed ingredient at index ' + index);
   };

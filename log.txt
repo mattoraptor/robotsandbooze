@@ -1,0 +1,68 @@
+[31m[MSG] Booze-O-Tron 9000 Ready[91m
+info: socket.io started
+[90mGET / [36m304 [90m8348ms[0m
+[90mGET /stylesheets/style.css [36m304 [90m72ms[0m
+[90mGET /libs/jquery/jquery.min.js [36m304 [90m71ms[0m
+[90mGET /libs/angular/angular.js [36m304 [90m64ms[0m
+[90mGET /libs/bootstrap-css/css/bootstrap.css [36m304 [90m56ms[0m
+[90mGET /stylesheets/overrides.css [36m304 [90m53ms[0m
+[90mGET /libs/angular-bootstrap/ui-bootstrap-tpls.js [36m304 [90m50ms[0m
+[90mGET /javascripts/DrinkModule.js [36m304 [90m47ms[0m
+[90mGET /javascripts/controllers/DrinkController.js [36m304 [90m21ms[0m
+[90mGET /javascripts/robot/frontend.js [36m304 [90m17ms[0m
+[90mGET /images/citrus-sunset.jpg [36m304 [90m61ms[0m
+[90mGET /images/drinks/5050martini.jpg [36m304 [90m61ms[0m
+[90mGET /images/drinks/bigmistake.jpg [36m304 [90m58ms[0m
+[90mGET /images/drinks/bulleit_bourbon.jpg [36m304 [90m50ms[0m
+[90mGET /images/drinks/Churchill.jpg [36m304 [90m48ms[0m
+[90mGET /images/drinks/dry_manhattan.jpg [36m304 [90m46ms[0m
+[90mGET /images/drinks/Bear_%20Cavalry.jpg [36m304 [90m148ms[0m
+[90mGET /images/drinks/VodkaMartini.jpg [36m304 [90m143ms[0m
+[90mGET /images/drinks/waldorf.jpg [36m304 [90m141ms[0m
+[90mGET /images/drinks/old_fashioned.jpg [36m304 [90m144ms[0m
+[90mGET /images/drinks/perfect_manhattan.jpg [36m304 [90m140ms[0m
+[90mGET /images/drinks/perfect_martini.png [36m304 [90m135ms[0m
+[90mGET /images/drinks/rosemary_manhattan.jpg [36m304 [90m49ms[0m
+[90mGET /images/drinks/dickel_rye.jpg [36m304 [90m47ms[0m
+[90mGET /images/drinks/rye_manhattan.jpg [36m304 [90m44ms[0m
+[90mGET /images/drinks/InOut-Martini.jpg [36m304 [90m40ms[0m
+[90mGET /images/drinks/drymartini.jpg [36m304 [90m37ms[0m
+[90mGET /images/drinks/drye_manhattan.jpg [36m304 [90m34ms[0m
+[90mGET /images/drinks/gin_and_bitters.jpg [36m304 [90m13ms[0m
+Dispensing Drink
+[ { name: 'Rye',
+    amount: 19112,
+    _id: '53b349a46b719f0703231eae',
+    '$$hashKey': '03O',
+    pump: 'pump6',
+    delay: 0 },
+  { name: 'Sweet Vermouth',
+    amount: 4778,
+    _id: '53b349a46b719f0703231ead',
+    '$$hashKey': '03P',
+    pump: 'pump4',
+    delay: 14334 },
+  { name: 'Bitters',
+    amount: 191,
+    _id: '53b349a46b719f0703231eac',
+    '$$hashKey': '03Q',
+    pump: 'pump2',
+    delay: 18921 } ]
+[32m[PUMP] Starting pump6[91m
+usePump pin: 22
+Pin 22 set to 1
+[32m[PUMP] Starting pump4[91m
+usePump pin: 16
+Pin 16 set to 1
+[32m[PUMP] Starting pump2[91m
+usePump pin: 13
+Pin 13 set to 1
+[32m[PUMP] Stopping pump2[91m
+usePump pin: 13
+[32m[PUMP] Stopping pump4[91m
+usePump pin: 16
+Pin 13 set to 0
+Pin 16 set to 0
+[32m[PUMP] Stopping pump6[91m
+usePump pin: 22
+Pin 22 set to 0
