@@ -1,5 +1,5 @@
 var socket = io.connect();
-var $scope; 
+var $scope;
 
 $(document).ready(function () {
   $scope = angular.element($('#drinkScope')).scope();
@@ -8,7 +8,7 @@ $(document).ready(function () {
   resizeCover($(window));
   hideControls();
   resizeContainers();
-  
+
   // Sizing
   window.onresize = function () {
     resizeCover($(window));
@@ -48,7 +48,7 @@ $(document).ready(function () {
     // Start dispensing drink
     makeDrink($scope.selectedDrink.ingredients, $scope.pumps, parseInt($scope.drinkTime));
   });
-  
+
   // $('.drinkName').mouseover(function () {
   //   $(this).parent().parent().children('.hiddenIngredientFloat').show();
   //   $(this).parent().parent().fadeTo(0, 0.8);
@@ -58,7 +58,7 @@ $(document).ready(function () {
   //   $(this).parent().parent().children('.hiddenIngredientFloat').hide();
   //   $(this).parent().parent().fadeTo(0, 1.0);
   // });
-  
+
   $('.drinkSize').on('click touch', function () {
     $('.drinkSize').each(function () {
       $(this).removeClass('selectedSize');
@@ -92,10 +92,10 @@ $(document).ready(function () {
       startOnePump($(this));
     }
   });
-    
+
   $('#allPumps').on('click touch', function () {
     var children = $('#hiddenPumpControls').children();
-    
+
     if ($(this).hasClass('active')) {
       $(this).text('All');
       children.each(function () {
@@ -109,7 +109,7 @@ $(document).ready(function () {
     } else {
       $(this).text('Stop');
       children.each(function () {
-        if ($(this).index() === children.length-1) { 
+        if ($(this).index() === children.length-1) {
           $(this).addClass('active');
         } else {
           startOnePump($(this));
@@ -117,7 +117,6 @@ $(document).ready(function () {
       });
     }
   });
-
   // setInterval(function () {
   //   resizeContainers();
   // }, 500);
@@ -186,7 +185,7 @@ function makeDrink(ingredients, pumps, drinkSize) {
   // Normalize
   var normFactor = drinkSize/amountTotal;
 
-  var totalPumpMilliseconds = parseInt(normFactor * largestAmount); 
+  var totalPumpMilliseconds = parseInt(normFactor * largestAmount);
   $scope.pumpTime = totalPumpMilliseconds;
 
   // Set the normalized amount and delay for each ingredient

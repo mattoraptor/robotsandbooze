@@ -20,9 +20,14 @@ var Drink = db.model('drinks', DrinkSchema);
 var PumpSchema = require('./models/Pump.js').PumpSchema;
 var Pump = db.model('pumps', PumpSchema);
 
-var robot = require('./public/javascripts/robot/backend.js');
-
 var app = express();
+
+var robot;
+if (app.get('env') == 'test') {
+  robot = require('./tests/fake_backend.js');
+} else {
+  robot = require('./public/javascripts/robot/backend.js');
+}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -83,7 +88,7 @@ db.once('open', function () {
         ingredients: [ { label: "pump0", ingredient: "" } ]
       };
       Pump.create(pumps);
-    } 
+    }
   });
 });
 
@@ -91,7 +96,7 @@ db.once('open', function () {
 
 // development error handler
 // will print stacktrace
-if (app.get('env') === 'development') {
+if ((app.get('env') === 'development') || (app.get('env') == 'test')){
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
         res.render('error', {
