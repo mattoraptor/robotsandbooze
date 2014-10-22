@@ -37,11 +37,14 @@ $(document).ready(function () {
     setTimeout(function () {
       console.log("Time to Dispense Drink: " + $scope.pumpTime + "ms");
       $('#makeProgress').animate({
-        'margin-left': String($(window).width()) + 'px'
-      }, parseInt($scope.pumpTime), 'linear', function () {
-        $('#make').removeClass('disabled');
-        $('#makeProgress').hide();
-        $('#makeProgress').css('margin-left', '-10px');
+          'margin-left': String($(window).width()) + 'px'
+        }
+        , parseInt($scope.pumpTime)
+        ,'linear'
+        , function () {
+          $('#make').removeClass('disabled');
+          $('#makeProgress').hide();
+          $('#makeProgress').css('margin-left', '-10px');
       });
     }, 200);
 
