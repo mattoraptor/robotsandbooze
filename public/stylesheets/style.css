@@ -222,15 +222,17 @@ a {
 }
 
 .pumpContainer {
-  display: inline-block;
+  display: block;
   margin: 4px;
-  width: 17%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
   height: 50px;
 }
 
 .mixers {
   background-color: #FFDDDD;
-  width: 100%;
+  /*width: 50%;*/
   height: 42px;
   margin: 5px;
   font: 16px "AvenirNext-Regular", Helvetica, Arial, sans-serif;
@@ -238,6 +240,11 @@ a {
   border: 0px solid #e74c3c;
   border-radius: 5px;
   -webkit-appearance: none;
+}
+
+.mixerLabel {
+  margin-right: 15px;
+  font: 24px "AvenirNext-Regular", Helvetica, Arial, sans-serif;
 }
 
 #pumpControlToggle {

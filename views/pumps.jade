@@ -23,5 +23,6 @@ block content
              div#allPumps.pumpButton.small All
             div#pumpControlToggle.pumpButton PUMP
           div.pumpContainer(ng-repeat="pump in pumps.ingredients")
+            label.mixerLabel {{pump.label}} -&gt;
             select.mixers(ng-change="savePumpValue($index); writeNumDuplicates()", ng-model="pump.ingredient", ng-options="i for i in ingredientsList")
 block foot
