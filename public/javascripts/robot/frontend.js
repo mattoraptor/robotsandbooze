@@ -95,31 +95,22 @@ $(document).ready(function () {
 
   $('#allPumps').on('click touch', function () {
     var children = $('#hiddenPumpControls').children();
-
     if ($(this).hasClass('active')) {
+      children.each(function () {
+        console.log('stopping pump ' + $(this).index());
+        stopOnePump($(this));
+      });
       $(this).text('All');
-      children.each(function () {
-        if ($(this).index() === children.length-1) {
-          $(this).text('All');
-          $(this).removeClass('active');
-        } else {
-          stopOnePump($(this))
-        }
-      });
+      $(this).removeClass('active');
     } else {
-      $(this).text('Stop');
       children.each(function () {
-        if ($(this).index() === children.length-1) {
-          $(this).addClass('active');
-        } else {
+          console.log('starting pump ' + $(this).index());
           startOnePump($(this));
-        }
       });
+      $(this).text('Stop');
+      $(this).addClass('active');
     }
   });
-  // setInterval(function () {
-  //   resizeContainers();
-  // }, 500);
 });
 
 function resizeCover(view) {
