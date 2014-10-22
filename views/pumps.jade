@@ -10,7 +10,7 @@ block head
 block content
   div#fullWidth(ng-controller="DrinkController", ng-init="setDrinks( #{JSON.stringify(drinks)} ); setPumps( #{JSON.stringify(pumps)} ); writeNumDuplicates()")
     div#drinkScope.container-fluid
-      div#cover
+      div#adminCover
         h1.title Booze-o-tron
         h2.subtitle AUTODRINK BOT 9000
          div#pumps.row
