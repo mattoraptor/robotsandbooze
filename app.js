@@ -77,6 +77,10 @@ io.sockets.on('connection', function (socket) {
   socket.on("Stop Pump", function (pump) {
     robot.stopPump(pump);
   });
+
+  socket.on("Get Status", function(callback) {
+    callback(robot.getStatus());
+  });
 });
 
 

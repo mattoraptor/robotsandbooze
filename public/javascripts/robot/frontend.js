@@ -19,6 +19,13 @@ $(document).ready(function () {
     resizeContainers();
   });
 
+  setTimeout(function() {
+    console.log('socketing');
+    socket.emit('Get Status', function(status) {
+      console.log('working? ' + status.working);
+    })
+  }, 2);
+
   // Front end drink making
   $('#make').on('click touch', function () {
     if ($('#make').hasClass('noselection') === true) {

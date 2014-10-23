@@ -108,6 +108,12 @@ exports.lcdClear = function() {
 
 console.log("\033[31m[MSG] Booze-O-Tron 9000 Ready\033[91m");
 
+exports.getStatus = function() {
+    var status = new Object();
+    status.working = false;
+    return status;
+};
+
 exports.pump = function (ingredients) {
   console.log("Dispensing Drink");
   ingstring = "";

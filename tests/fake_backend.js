@@ -12,6 +12,16 @@ exports.pump = function (ingredients) {
   console.log("Dispensing Drink " + ingredients);
 };
 
+exports.getStatus = function() {
+    var currentTime = new Date().getTime();
+    var status = new Object();
+    status.working = true;
+    status.startTime = currentTime - (5 * 1000);
+    status.duration = 10 * 1000;
+    status.endTime = currentTime + (5 * 1000);
+    return status;
+};
+
 exports.startPump = function (pump) {
   console.log("\033[32m[PUMP] Starting " + pump + "\033[91m");
 
