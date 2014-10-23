@@ -19,12 +19,34 @@ $(document).ready(function () {
     resizeContainers();
   });
 
-  setTimeout(function() {
-    console.log('socketing');
-    socket.emit('Get Status', function(status) {
-      console.log('working? ' + status.working);
-    })
-  }, 2);
+  socket.emit('Get Status', function(status) {
+    console.log('gotstatus, making drink? ' + status.working);
+    if (status.working) {
+      console.log('Making Drink');
+      var hadNoSelection = false;
+      if ($('#make').hasClass('noselection')) {
+        hadNoSelection = true;
+        $('#make').removeClass('noselection');
+      }
+      $('#make').addClass('disabled');
+      $('#makeProgress').show();
+      var timeLeft = status.endTime - (new Date().getTime());
+      console.log("Time to Dispense Drink: " + timeLeft + "ms");
+      $('#makeProgress').animate({
+          'margin-left': String($(window).width()) + 'px'
+        }
+        , timeLeft
+        ,'linear'
+        , function () {
+          $('#make').removeClass('disabled');
+          if (hadNoSelection) {
+            $('#make').addClass('noselection');
+          }
+          $('#makeProgress').hide();
+          $('#makeProgress').css('margin-left', '-10px');
+      });
+    }
+  });
 
   // Front end drink making
   $('#make').on('click touch', function () {
