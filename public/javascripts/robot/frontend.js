@@ -19,34 +19,34 @@ $(document).ready(function () {
     resizeContainers();
   });
 
-  socket.emit('Get Status', function(status) {
-    console.log('gotstatus, making drink? ' + status.working);
-    if (status.working) {
-      console.log('Making Drink');
-      var hadNoSelection = false;
-      if ($('#make').hasClass('noselection')) {
-        hadNoSelection = true;
-        $('#make').removeClass('noselection');
-      }
-      $('#make').addClass('disabled');
-      $('#makeProgress').show();
-      var timeLeft = status.endTime - (new Date().getTime());
-      console.log("Time to Dispense Drink: " + timeLeft + "ms");
-      $('#makeProgress').animate({
-          'margin-left': String($(window).width()) + 'px'
+  setInterval(function() {
+   socket.emit('Get Status', function(status) {
+      if (status.working && !$("#makeProgress").is(':animated')) {
+        var hadNoSelection = false;
+        if ($('#make').hasClass('noselection')) {
+          hadNoSelection = true;
+          $('#make').removeClass('noselection');
         }
-        , timeLeft
-        ,'linear'
-        , function () {
-          $('#make').removeClass('disabled');
-          if (hadNoSelection) {
-            $('#make').addClass('noselection');
+        $('#make').addClass('disabled');
+        $('#makeProgress').show();
+        var timeLeft = status.endTime - (new Date().getTime());
+        $('#makeProgress').animate({
+            'margin-left': String($(window).width()) + 'px'
           }
-          $('#makeProgress').hide();
-          $('#makeProgress').css('margin-left', '-10px');
-      });
-    }
-  });
+          , timeLeft
+          ,'linear'
+          , function () {
+            $('#make').removeClass('disabled');
+            if (hadNoSelection) {
+              $('#make').addClass('noselection');
+            }
+            $('#makeProgress').hide();
+            $('#makeProgress').css('margin-left', '-10px');
+        });
+      }
+    });
+  }, 200);
+
 
   // Front end drink making
   $('#make').on('click touch', function () {
@@ -61,21 +61,21 @@ $(document).ready(function () {
 
     // Visual goodies
     console.log('Making Drink');
-    $('#make').addClass('disabled');
-    $('#makeProgress').show();
-    setTimeout(function () {
-      console.log("Time to Dispense Drink: " + $scope.pumpTime + "ms");
-      $('#makeProgress').animate({
-          'margin-left': String($(window).width()) + 'px'
-        }
-        , parseInt($scope.pumpTime)
-        ,'linear'
-        , function () {
-          $('#make').removeClass('disabled');
-          $('#makeProgress').hide();
-          $('#makeProgress').css('margin-left', '-10px');
-      });
-    }, 200);
+    // $('#make').addClass('disabled');
+    // $('#makeProgress').show();
+    // setTimeout(function () {
+    //   console.log("Time to Dispense Drink: " + $scope.pumpTime + "ms");
+    //   $('#makeProgress').animate({
+    //       'margin-left': String($(window).width()) + 'px'
+    //     }
+    //     , parseInt($scope.pumpTime)
+    //     ,'linear'
+    //     , function () {
+    //       $('#make').removeClass('disabled');
+    //       $('#makeProgress').hide();
+    //       $('#makeProgress').css('margin-left', '-10px');
+    //   });
+    // }, 200);
 
     // Start dispensing drink
     makeDrink($scope.selectedDrink.ingredients, $scope.pumps, parseInt($scope.drinkTime));
