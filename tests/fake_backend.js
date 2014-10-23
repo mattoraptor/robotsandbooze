@@ -16,8 +16,6 @@ exports.getStatus = function() {
     var currentTime = new Date().getTime();
     var status = new Object();
     status.working = true;
-    status.startTime = currentTime - (5 * 1000);
-    status.duration = 10 * 1000;
     status.endTime = currentTime + (5 * 1000);
     return status;
 };
