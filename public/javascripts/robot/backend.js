@@ -117,9 +117,10 @@ function updateStatus(ingredients, pumpStatus) {
   }
   pumpStatus.working = true;
   pumpStatus.endTime = (new Date().getTime()) + maxDelay;
-  //setTimeout(function() {
-  //  pumpStatus.working = false;
-  //}, maxDelay);
+  setTimeout(function() {
+    console.log('not working anymore');
+   pumpStatus.working = false;
+  }, maxDelay);
 }
 
 exports.pump = function (ingredients, pumpStatus) {
