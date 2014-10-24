@@ -108,11 +108,7 @@ exports.lcdClear = function() {
 
 console.log("\033[31m[MSG] Booze-O-Tron 9000 Ready\033[91m");
 
-pumpStatus = new Object();
-
-exports.getStatus = function() {
-    return pumpStatus;
-};
+exports.pumpStatus = new Object();
 
 function updateStatus(ingredients) {
   var maxDelay = 0;
