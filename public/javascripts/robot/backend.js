@@ -108,14 +108,7 @@ exports.lcdClear = function() {
 
 console.log("\033[31m[MSG] Booze-O-Tron 9000 Ready\033[91m");
 
-pumpStatus = {
-  working: false,
-  endTime: 0
-}
-
-exports.pumpStatus = pumpStatus;
-
-function updateStatus(ingredients) {
+function updateStatus(ingredients, pumpStatus) {
   var maxDelay = 0;
   for (var i in ingredients) {
     if (ingredients[i].delay > maxDelay) {
@@ -129,10 +122,10 @@ function updateStatus(ingredients) {
   }, maxDelay);
 }
 
-exports.pump = function (ingredients) {
+exports.pump = function (ingredients, pumpStatus) {
   console.log("Dispensing Drink");
 
-  updateStatus(ingredients);
+  updateStatus(ingredients, pumpStatus);
 
   ingstring = "";
   for (var i in ingredients) {
