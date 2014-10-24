@@ -58,6 +58,10 @@ app.use(function(req, res, next) {
     next(err);
 });
 
+var pumpStatus = {
+  working: false,
+  endTime: 0
+}
 
 var server = app.listen(3000, '0.0.0.0');
 var io = require('socket.io').listen(server);
@@ -79,8 +83,7 @@ io.sockets.on('connection', function (socket) {
   });
 
   socket.on("Get Status", function(callback) {
-    console.log('pump is on? ' + robot.pumpStatus.working);
-    callback(robot.pumpStatus);
+    callback(pumpStatus);
   });
 });
 
