@@ -59,37 +59,11 @@ $(document).ready(function () {
       return;
     }
 
-    // Visual goodies
     console.log('Making Drink');
-    // $('#make').addClass('disabled');
-    // $('#makeProgress').show();
-    // setTimeout(function () {
-    //   console.log("Time to Dispense Drink: " + $scope.pumpTime + "ms");
-    //   $('#makeProgress').animate({
-    //       'margin-left': String($(window).width()) + 'px'
-    //     }
-    //     , parseInt($scope.pumpTime)
-    //     ,'linear'
-    //     , function () {
-    //       $('#make').removeClass('disabled');
-    //       $('#makeProgress').hide();
-    //       $('#makeProgress').css('margin-left', '-10px');
-    //   });
-    // }, 200);
 
     // Start dispensing drink
     makeDrink($scope.selectedDrink.ingredients, $scope.pumps, parseInt($scope.drinkTime));
   });
-
-  // $('.drinkName').mouseover(function () {
-  //   $(this).parent().parent().children('.hiddenIngredientFloat').show();
-  //   $(this).parent().parent().fadeTo(0, 0.8);
-  // });
-
-  // $('.drinkName').mouseout(function () {
-  //   $(this).parent().parent().children('.hiddenIngredientFloat').hide();
-  //   $(this).parent().parent().fadeTo(0, 1.0);
-  // });
 
   $('.drinkSize').on('click touch', function () {
     $('.drinkSize').each(function () {
