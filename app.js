@@ -70,7 +70,7 @@ io.set('log level', 1); // reduce logging
 io.sockets.on('connection', function (socket) {
   socket.on("Make Drink", function (drinkName, ingredients) {
     robot.lcdPrint(10 - (drinkName.length/2), 0, drinkName);
-    robot.pump(ingredients);
+    robot.pump(ingredients, pumpStatus);
     console.log(ingredients);
   });
 

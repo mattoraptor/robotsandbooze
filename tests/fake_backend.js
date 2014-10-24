@@ -8,7 +8,7 @@ exports.lcdClear = function() {
 
 //BACKEND
 
-exports.pump = function (ingredients) {
+exports.pump = function (ingredients, pumpStatus) {
   console.log("Dispensing Drink " + ingredients);
 };
 
