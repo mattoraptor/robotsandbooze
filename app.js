@@ -79,7 +79,7 @@ io.sockets.on('connection', function (socket) {
   });
 
   socket.on("Get Status", function(callback) {
-    console.log('pump status is ' + robot.pumpStatus);
+    console.log('pump is on? ' + robot.pumpStatus.working);
     callback(robot.pumpStatus);
   });
 });
