@@ -111,10 +111,11 @@ console.log("\033[31m[MSG] Booze-O-Tron 9000 Ready\033[91m");
 function updateStatus(ingredients, pumpStatus) {
   var maxDelay = 0;
   for (var i in ingredients) {
-    if (ingredients[i].delay > maxDelay) {
-      maxDelay = ingredients[i].delay;
+    if (ingredients[i].amount > maxDelay) {
+      maxDelay = ingredients[i].amount;
     }
   }
+  console.log('maxdelay is ' + maxDelay);
   pumpStatus.working = true;
   pumpStatus.endTime = (new Date().getTime()) + maxDelay;
   setTimeout(function() {
@@ -225,4 +226,5 @@ exports.showTitle = function () {
   exports.lcdClear();
   exports.lcdPrint(0, 1, " BOOZE-O-TRON 9000  ");
   exports.lcdPrint(0, 3, ips + ":3000");
+//  exports.lcdPrint(0, 3, "Insert Bitcoins here");
 };
