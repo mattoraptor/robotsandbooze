@@ -20,7 +20,7 @@ block content
               div.pumpButton(ng-click="removePump()") -
             div#hiddenPumpControls
               div.pumpButton.singlePump(ng-repeat="pump in pumps.ingredients") {{$index}}
-             div#allPumps.pumpButton.small All
+             //- div#allPumps.pumpButton.small All
             div#pumpControlToggle.pumpButton PUMP
           div.pumpContainer(ng-repeat="pump in pumps.ingredients")
             label.mixerLabel {{pump.label}} -&gt;
