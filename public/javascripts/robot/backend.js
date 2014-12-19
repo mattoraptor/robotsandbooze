@@ -225,4 +225,5 @@ exports.showTitle = function () {
   exports.lcdClear();
   exports.lcdPrint(0, 1, " BOOZE-O-TRON 9000  ");
   exports.lcdPrint(0, 3, ips + ":3000");
+//  exports.lcdPrint(0, 3, "Insert Bitcoins here");
 };
